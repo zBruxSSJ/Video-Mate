@@ -56,7 +56,7 @@ def draw(frame):
     p_sub = su.seg_progress(frame, 54, 20)
     if p_sub > 0:
         y = 0.625 - (1 - p_sub) * 0.02
-        ax.text(0.5, y, "Matemática  ·  3° BATIN  ·  Estación 3", fontsize=17,
+        ax.text(0.5, y, "Matemática  ·  3° BATIN  ·  Estación 2", fontsize=17,
                  fontfamily=su.FONT_BODY_MD, color=su.rgba(su.TEXT_DIM, p_sub),
                  ha="center", va="center")
 

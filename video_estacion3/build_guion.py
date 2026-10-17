@@ -25,7 +25,7 @@ SCENES = [
     dict(num=1, title="Intro", dur=14, speaker="Bruno Ferro",
          text=[
              "¡Hola a todos! Bienvenidos a nuestro video de Matemática, tercero BATIN, "
-             "Estación 3: Problema 2.",
+             "Estación 2: Problema 2.",
              "Tenemos que hallar a y b para que g de x sea continua en todos los reales.",
              "Somos Bruno Ferro, Fabrizio Osorio, Sebastián Cardoso y Eugenia Pérez, "
              "del San Ignacio de Loyola School. ¡Vamos a resolverlo!",
@@ -148,7 +148,7 @@ title.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
 sub = doc.add_paragraph()
 sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
-r = sub.add_run("Matemática · 3° BATIN · Estación 3 · San Ignacio de Loyola School")
+r = sub.add_run("Matemática · 3° BATIN · Estación 2 · San Ignacio de Loyola School")
 r.italic = True
 r.font.size = Pt(12)
 
