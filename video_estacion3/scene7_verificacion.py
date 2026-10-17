@@ -1,11 +1,11 @@
-"""Escena 7 — Verificación gráfica (~38 s / 912 frames)."""
+"""Escena 7 — Verificación gráfica (~31 s / 744 frames)."""
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import scene_utils as su
 
-DURATION_S = 38
+DURATION_S = 31
 N_FRAMES = DURATION_S * su.FPS
 
 # Dominio / rango de datos del gráfico
@@ -51,9 +51,9 @@ def style_gax():
 
 
 SEGMENTS = [
-    (f1, XMIN, 1.0, su.TURQUOISE, 160, 120, "x + 1", (-0.65, 2.4)),
-    (f2, 1.0, 3.0, su.ORANGE, 300, 120, r"$\frac{7}{2}x - \frac{3}{2}$", (2.08, 5.9)),
-    (f3, 3.0, XMAX, su.RED, 440, 120, "3x", (3.85, 13.6)),
+    (f1, XMIN, 1.0, su.TURQUOISE, 110, 86, "x + 1", (-0.65, 2.4)),
+    (f2, 1.0, 3.0, su.ORANGE, 210, 86, r"$\frac{7}{2}x - \frac{3}{2}$", (2.08, 5.9)),
+    (f3, 3.0, XMAX, su.RED, 310, 86, "3x", (3.85, 13.6)),
 ]
 
 CHECKLIST = [
@@ -69,14 +69,14 @@ def draw(frame):
     style_gax()
 
     # --- Título ---
-    p_title = su.seg_progress(frame, 0, 35)
+    p_title = su.seg_progress(frame, 0, 24)
     if p_title > 0:
         y = 0.955 - (1 - p_title) * 0.02
         ax.text(0.5, y, "VERIFICACIÓN GRÁFICA", fontsize=28,
                  fontfamily=su.FONT_TITLE_XB, color=su.rgba(su.TEXT_LIGHT, p_title),
                  ha="center", va="center")
 
-    p_sub = su.seg_progress(frame, 30, 35)
+    p_sub = su.seg_progress(frame, 20, 24)
     if p_sub > 0:
         ax.text(0.5, 0.895, "Dibujamos los tres tramos y comprobamos que no hay saltos ni agujeros:",
                  fontsize=13.5, fontfamily=su.FONT_BODY, color=su.rgba(su.TEXT_DIM, p_sub),
@@ -98,10 +98,10 @@ def draw(frame):
 
     # --- Puntos de unión con guías punteadas ---
     for (px, py), color, start, lbl_off in [
-        ((1, 2), su.TURQUOISE, 560, (0.18, -0.95)),
-        ((3, 9), su.RED, 640, (0.18, 0.75)),
+        ((1, 2), su.TURQUOISE, 410, (0.18, -0.95)),
+        ((3, 9), su.RED, 460, (0.18, 0.75)),
     ]:
-        p = su.seg_progress(frame, start, 55)
+        p = su.seg_progress(frame, start, 40)
         if p <= 0:
             continue
         gax.plot([XMIN, px], [py, py], linestyle=(0, (4, 3)), color=su.TEXT_FAINT,
@@ -114,15 +114,15 @@ def draw(frame):
 
     # --- Panel lateral ---
     panel_x0 = 0.655
-    p_panel_title = su.seg_progress(frame, 560, 30)
+    p_panel_title = su.seg_progress(frame, 410, 24)
     if p_panel_title > 0:
         ax.text(panel_x0, 0.80, "VERIFICACIÓN", fontsize=16.5, fontfamily=su.FONT_TITLE_SB,
                  color=su.rgba(su.TEXT_LIGHT, p_panel_title), ha="left", va="center")
 
-    item_starts = [600, 650, 700]
+    item_starts = [440, 480, 520]
     item_ys = [0.685, 0.575, 0.445]
     for (text, color), y, start in zip(CHECKLIST, item_ys, item_starts):
-        p = su.seg_progress(frame, start, 45)
+        p = su.seg_progress(frame, start, 34)
         if p <= 0:
             continue
         su.rounded_card(ax, panel_x0 + 0.155, y, 0.31, 0.105,
@@ -139,9 +139,9 @@ def draw(frame):
                  wrap=True)
 
     # --- Mensaje final ---
-    p_final = su.seg_progress(frame, 770, 55)
+    p_final = su.seg_progress(frame, 590, 40)
     if p_final > 0:
-        pulse = 1.0 if frame < 825 else 0.85 + 0.15 * (0.5 + 0.5 * np.sin((frame - 825) / 16.0))
+        pulse = 1.0 if frame < 635 else 0.85 + 0.15 * (0.5 + 0.5 * np.sin((frame - 635) / 16.0))
         scale = 0.7 + 0.3 * p_final
         su.rounded_card(ax, panel_x0 + 0.155, 0.235, 0.335, 0.235,
                          facecolor=su.rgba(su.CARD_BG_ALT, p_final), edgecolor=su.GREEN,

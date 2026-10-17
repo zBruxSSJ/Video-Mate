@@ -22,15 +22,15 @@ def fmt_time(s):
 
 
 SCENES = [
-    dict(num=1, title="Intro", dur=15, speaker="Bruno Ferro",
+    dict(num=1, title="Intro", dur=14, speaker="Bruno Ferro",
          text=[
-             "¡Hola a todos! Bienvenidos a nuestro video: Desafío de Parámetros, "
-             "de Matemática, tercero BATIN, Estación 3.",
+             "¡Hola a todos! Bienvenidos a nuestro video de Matemática, tercero BATIN, "
+             "Estación 3: Problema 2.",
+             "Tenemos que hallar a y b para que g de x sea continua en todos los reales.",
              "Somos Bruno Ferro, Fabrizio Osorio, Sebastián Cardoso y Eugenia Pérez, "
-             "del San Ignacio de Loyola School.",
-             "Hoy vamos a resolver un problema de continuidad de funciones definidas por partes.",
+             "del San Ignacio de Loyola School. ¡Vamos a resolverlo!",
          ]),
-    dict(num=2, title="Condiciones de continuidad", dur=38, speaker="Fabrizio Osorio",
+    dict(num=2, title="Condiciones de continuidad", dur=20, speaker="Fabrizio Osorio",
          text=[
              "Antes de resolver el problema, repasemos las tres condiciones que debe "
              "cumplir una función para ser continua en un punto x igual a a.",
@@ -41,7 +41,7 @@ SCENES = [
              "Tercera condición: ese límite tiene que ser igual a g de a.",
              "Si se cumplen las tres condiciones, la función es continua en ese punto.",
          ]),
-    dict(num=3, title="Planteo del problema", dur=45, speaker="Fabrizio Osorio",
+    dict(num=3, title="Planteo del problema", dur=33, speaker="Fabrizio Osorio",
          text=[
              "Ahora sí, planteemos nuestro problema. Tenemos la función g de x, "
              "definida por partes:",
@@ -54,7 +54,7 @@ SCENES = [
              "Esos son los únicos puntos en riesgo de discontinuidad, y ahí es donde "
              "vamos a aplicar las tres condiciones que acabamos de repasar.",
          ]),
-    dict(num=4, title="Condición en x = 1", dur=40, speaker="Sebastián Cardoso",
+    dict(num=4, title="Condición en x = 1", dur=22, speaker="Sebastián Cardoso",
          text=[
              "Empecemos analizando la continuidad en x igual a 1.",
              "Primero, calculamos el límite lateral izquierdo usando el tramo x más 1, "
@@ -67,7 +67,7 @@ SCENES = [
              "al valor de la función. Entonces igualamos: a más b, igual a 2. "
              "Esta es nuestra Ecuación 1.",
          ]),
-    dict(num=5, title="Condición en x = 3", dur=35, speaker="Sebastián Cardoso",
+    dict(num=5, title="Condición en x = 3", dur=20, speaker="Sebastián Cardoso",
          text=[
              "Hagamos exactamente lo mismo en el otro punto de unión: x igual a 3.",
              "Primero, el límite lateral izquierdo, usando el tramo a x más b: "
@@ -78,7 +78,7 @@ SCENES = [
              "Tercero, igualamos el límite con el valor de la función: "
              "3a más b, igual a 9. Esta es nuestra Ecuación 2.",
          ]),
-    dict(num=6, title="Resolver el sistema", dur=35, speaker="Eugenia Pérez",
+    dict(num=6, title="Resolver el sistema", dur=28, speaker="Eugenia Pérez",
          text=[
              "Ahora tenemos un sistema de dos ecuaciones con dos incógnitas: "
              "a más b igual a 2, y 3a más b igual a 9.",
@@ -92,7 +92,7 @@ SCENES = [
              "Entonces, nuestra solución es: a igual a siete medios, y b igual a "
              "menos tres medios.",
          ]),
-    dict(num=7, title="Verificación gráfica", dur=38, speaker="Eugenia Pérez",
+    dict(num=7, title="Verificación gráfica", dur=31, speaker="Eugenia Pérez",
          text=[
              "Comprobemos gráficamente que todo esto tiene sentido. Vamos a dibujar "
              "los tres tramos de la función.",
@@ -106,7 +106,7 @@ SCENES = [
              "Se cumplen las tres condiciones, así que podemos afirmar que g es "
              "continua en todo su dominio.",
          ]),
-    dict(num=8, title="Cierre", dur=25, speaker="Todos / Bruno",
+    dict(num=8, title="Cierre", dur=19, speaker="Todos / Bruno",
          text=[
              "Para resumir: primero identificamos los puntos de corte del dominio; "
              "después planteamos la condición de continuidad en cada uno; luego "

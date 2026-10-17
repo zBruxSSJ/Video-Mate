@@ -1,11 +1,11 @@
-"""Escena 8 — Cierre (~25 s / 600 frames)."""
+"""Escena 8 — Cierre (~19 s / 456 frames)."""
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import scene_utils as su
 
-DURATION_S = 25
+DURATION_S = 19
 N_FRAMES = DURATION_S * su.FPS
 
 CARDS = [
@@ -21,7 +21,7 @@ CARDS = [
 
 CENTERS = [(0.285, 0.645), (0.715, 0.645), (0.285, 0.345), (0.715, 0.345)]
 CARD_W, CARD_H = 0.40, 0.255
-STARTS = [80, 155, 230, 305]
+STARTS = [55, 100, 145, 190]
 
 fig = su.make_base_figure()
 ax = su.setup_full_axes(fig)
@@ -30,7 +30,7 @@ ax = su.setup_full_axes(fig)
 def draw(frame):
     su.clear_axes(ax)
 
-    p_title = su.seg_progress(frame, 0, 35)
+    p_title = su.seg_progress(frame, 0, 24)
     if p_title > 0:
         y = 0.935 - (1 - p_title) * 0.03
         ax.text(0.5, y, "RESUMEN DEL PROCEDIMIENTO", fontsize=28,
@@ -38,7 +38,7 @@ def draw(frame):
                  ha="center", va="center")
 
     for (num, color, title, desc), (cx, cy), start in zip(CARDS, CENTERS, STARTS):
-        p = su.seg_progress(frame, start, 50)
+        p = su.seg_progress(frame, start, 30)
         if p <= 0:
             continue
         scale = 0.82 + 0.18 * p
@@ -56,13 +56,13 @@ def draw(frame):
                  color=su.rgba(su.TEXT_LIGHT, text_alpha), ha="center", va="center",
                  wrap=True)
 
-    p_thanks = su.seg_progress(frame, 410, 50)
+    p_thanks = su.seg_progress(frame, 255, 30)
     if p_thanks > 0:
         y = 0.095 - (1 - p_thanks) * 0.02
         ax.text(0.5, y, "¡Gracias por ver!", fontsize=24, fontfamily=su.FONT_TITLE_B,
                  color=su.rgba(su.GOLD, p_thanks), ha="center", va="center")
 
-    p_names = su.seg_progress(frame, 450, 50)
+    p_names = su.seg_progress(frame, 280, 30)
     if p_names > 0:
         ax.text(0.5, 0.045,
                  "Bruno Ferro · Fabrizio Osorio · Sebastián Cardoso · Eugenia Pérez",

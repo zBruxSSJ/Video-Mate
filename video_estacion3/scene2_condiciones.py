@@ -1,10 +1,10 @@
-"""Escena 2 — Las 3 condiciones de continuidad (~38 s / 912 frames)."""
+"""Escena 2 — Las 3 condiciones de continuidad (~20 s / 480 frames)."""
 import os
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import scene_utils as su
 
-DURATION_S = 38
+DURATION_S = 20
 N_FRAMES = DURATION_S * su.FPS
 
 CONDITIONS = [
@@ -22,7 +22,7 @@ CONDITIONS = [
 CARD_W = 0.80
 CARD_H = 0.165
 CARD_YS = [0.615, 0.385, 0.155]
-CARD_STARTS = [90, 190, 290]
+CARD_STARTS = [58, 120, 182]
 
 fig = su.make_base_figure()
 ax = su.setup_full_axes(fig)
@@ -31,14 +31,14 @@ ax = su.setup_full_axes(fig)
 def draw(frame):
     su.clear_axes(ax)
 
-    p_title = su.seg_progress(frame, 0, 40)
+    p_title = su.seg_progress(frame, 0, 26)
     if p_title > 0:
         y = 0.905 - (1 - p_title) * 0.03
         ax.text(0.5, y, "CONDICIONES DE CONTINUIDAD", fontsize=32,
                  fontfamily=su.FONT_TITLE_XB, color=su.rgba(su.TEXT_LIGHT, p_title),
                  ha="center", va="center")
 
-    p_sub = su.seg_progress(frame, 35, 40)
+    p_sub = su.seg_progress(frame, 22, 24)
     if p_sub > 0:
         y = 0.825 - (1 - p_sub) * 0.02
         ax.text(0.5, y, "Para que g sea continua en x = a, deben cumplirse tres condiciones:",
@@ -46,7 +46,7 @@ def draw(frame):
                  ha="center", va="center")
 
     for (num, color, name, formula, desc), cy, start in zip(CONDITIONS, CARD_YS, CARD_STARTS):
-        p = su.seg_progress(frame, start, 45)
+        p = su.seg_progress(frame, start, 34)
         if p <= 0:
             continue
         x_off = (1 - p) * 0.12

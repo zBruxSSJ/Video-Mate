@@ -1,17 +1,17 @@
-"""Escena 5 — Condición de continuidad en x = 3 (~35 s / 840 frames)."""
+"""Escena 5 — Condición de continuidad en x = 3 (~20 s / 480 frames)."""
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import scene_utils as su
 
-DURATION_S = 35
+DURATION_S = 20
 N_FRAMES = DURATION_S * su.FPS
 
 CARD_W = 0.80
 CARD_H = 0.165
 CARD_YS = [0.665, 0.455, 0.245]
-CARD_STARTS = [90, 210, 330]
+CARD_STARTS = [58, 124, 190]
 
 STEPS = [
     ("①", su.ORANGE, "Límite lateral izquierdo en x = 3 (tramo ax + b)",
@@ -29,14 +29,14 @@ ax = su.setup_full_axes(fig)
 def draw(frame):
     su.clear_axes(ax)
 
-    p_title = su.seg_progress(frame, 0, 40)
+    p_title = su.seg_progress(frame, 0, 26)
     if p_title > 0:
         y = 0.925 - (1 - p_title) * 0.03
         ax.text(0.5, y, "CONDICIÓN EN x = 3", fontsize=32,
                  fontfamily=su.FONT_TITLE_XB, color=su.rgba(su.TEXT_LIGHT, p_title),
                  ha="center", va="center")
 
-    p_sub = su.seg_progress(frame, 30, 40)
+    p_sub = su.seg_progress(frame, 22, 24)
     if p_sub > 0:
         ax.text(0.5, 0.855,
                  "Repetimos el mismo análisis en el segundo punto de unión:",
@@ -44,12 +44,12 @@ def draw(frame):
                  ha="center", va="center")
 
     for (badge, color, title, formula, note), cy, start in zip(STEPS, CARD_YS, CARD_STARTS):
-        p = su.seg_progress(frame, start, 50)
+        p = su.seg_progress(frame, start, 34)
         su.step_card(ax, 0.5, cy, CARD_W, CARD_H, badge, color, title, formula, note, p)
 
-    p_eq = su.seg_progress(frame, 410, 45)
+    p_eq = su.seg_progress(frame, 260, 32)
     if p_eq > 0:
-        pulse = 1.0 if frame < 455 else 0.88 + 0.12 * (0.5 + 0.5 * np.sin((frame - 455) / 14.0))
+        pulse = 1.0 if frame < 305 else 0.88 + 0.12 * (0.5 + 0.5 * np.sin((frame - 305) / 14.0))
         scale = 0.6 + 0.4 * p_eq
         su.rounded_card(ax, 0.5, 0.075, 0.52, 0.11,
                          facecolor=su.rgba(su.CARD_BG_ALT, p_eq), edgecolor=su.GOLD,
