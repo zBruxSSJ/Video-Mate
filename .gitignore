@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 video_estacion3/renders/
 video_estacion3/logs/
+video_continuidad/renders/
+video_continuidad/logs/
