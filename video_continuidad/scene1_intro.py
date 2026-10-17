@@ -65,12 +65,12 @@ def draw(frame):
     p_card = su.seg_progress(frame, 150, 40)
     if p_card > 0:
         scale = 0.85 + 0.15 * p_card
-        su.rounded_card(ax, 0.5, 0.50, 0.70, 0.40, facecolor=su.rgba(su.CARD_BG, p_card * 0.97),
+        su.rounded_card(ax, 0.5, 0.49, 0.70, 0.46, facecolor=su.rgba(su.CARD_BG, p_card * 0.97),
                          edgecolor=su.CELESTE, radius=0.025, lw=2.0, scale=scale)
 
     p_title = su.seg_progress(frame, 170, 40)
     if p_title > 0:
-        y = 0.615 - (1 - p_title) * 0.02
+        y = 0.645 - (1 - p_title) * 0.02
         ax.text(0.5, y, "DETECTIVES DE LA\nCONTINUIDAD", fontsize=42,
                  fontfamily=su.FONT_TITLE_XB, color=su.rgba(su.TEXT_LIGHT, p_title),
                  ha="center", va="center", linespacing=1.15)
@@ -78,18 +78,24 @@ def draw(frame):
     p_bar = su.seg_progress(frame, 195, 20)
     if p_bar > 0:
         bar_w = 0.22 * p_bar
-        su.glow_plot(ax, [0.5 - bar_w / 2, 0.5 + bar_w / 2], [0.505, 0.505],
+        su.glow_plot(ax, [0.5 - bar_w / 2, 0.5 + bar_w / 2], [0.535, 0.535],
                      su.VIOLET, lw=2.6, alpha_core=p_bar)
 
     p_sub = su.seg_progress(frame, 210, 30)
     if p_sub > 0:
-        ax.text(0.5, 0.455, "Develando los secretos de las funciones", fontsize=20,
+        ax.text(0.5, 0.485, "Develando los secretos de las funciones", fontsize=20,
                  fontfamily=su.FONT_TITLE_MD, color=su.rgba(su.CELESTE_SOFT, p_sub),
                  ha="center", va="center")
 
-    p_road = su.seg_progress(frame, 250, 40)
+    p_course = su.seg_progress(frame, 235, 25)
+    if p_course > 0:
+        ax.text(0.5, 0.435, "Matemática  ·  3° B BATIN", fontsize=15,
+                 fontfamily=su.FONT_BODY_MD, color=su.rgba(su.TEXT_DIM, p_course),
+                 ha="center", va="center")
+
+    p_road = su.seg_progress(frame, 265, 40)
     if p_road > 0:
-        ax.text(0.5, 0.375,
+        ax.text(0.5, 0.35,
                  "Hoy vamos a descubrir qué es la continuidad\n"
                  "y cómo identificar los distintos tipos de discontinuidad.",
                  fontsize=15, fontfamily=su.FONT_BODY, color=su.rgba(su.TEXT_DIM, p_road),

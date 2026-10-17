@@ -5,10 +5,10 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
 
 PERSON_COLORS = {
-    "Participante 1": RGBColor(0x0E, 0x7A, 0xB4),   # celeste oscuro
-    "Participante 2": RGBColor(0x6D, 0x28, 0xD9),   # violeta
-    "Participante 3": RGBColor(0xB4, 0x7B, 0x0E),   # ámbar oscuro
-    "Participante 4": RGBColor(0xC2, 0x41, 0x0C),   # rosa/rojo oscuro
+    "Sofía Cabrera": RGBColor(0x0E, 0x7A, 0xB4),   # celeste oscuro
+    "Micaela Cubilla": RGBColor(0x6D, 0x28, 0xD9),   # violeta
+    "Fabrizio Riquelme": RGBColor(0xB4, 0x7B, 0x0E),   # ámbar oscuro
+    "Jerónimo Lovera": RGBColor(0xC2, 0x41, 0x0C),   # rosa/rojo oscuro
     "Todos": RGBColor(0x0E, 0x7A, 0xB4),
 }
 
@@ -20,12 +20,12 @@ def fmt_time(s):
 
 
 SCENES = [
-    dict(num=1, title="Introducción", dur=25, speaker="Participante 1",
+    dict(num=1, title="Introducción", dur=25, speaker="Sofía Cabrera",
          text=[
              "¡Hola a todos! Hoy vamos a explicar qué es la continuidad de una función "
              "y cómo podemos identificar los diferentes tipos de discontinuidad.",
          ]),
-    dict(num=2, title="Concepto de continuidad", dur=50, speaker="Participante 1",
+    dict(num=2, title="Concepto de continuidad", dur=50, speaker="Sofía Cabrera",
          text=[
              "Primero, ¿qué significa que una función sea continua?",
              "Podemos imaginar una gráfica que podemos recorrer sin interrupciones. Pero en "
@@ -41,7 +41,7 @@ SCENES = [
              "Como el límite y el valor de la función coinciden, y se cumplen las tres "
              "condiciones, podemos concluir que la función es continua en x = 2.",
          ]),
-    dict(num=3, title="Discontinuidad evitable", dur=50, speaker="Participante 2",
+    dict(num=3, title="Discontinuidad evitable", dur=50, speaker="Micaela Cubilla",
          text=[
              "Ahora vamos a ver el primer tipo de discontinuidad: la evitable.",
              "Se llama así porque podemos eliminarla cambiando o definiendo el valor de "
@@ -62,7 +62,7 @@ SCENES = [
              "el valor de la función en x = 1 a 2, la función sería continua en ese punto.",
          ]),
     dict(num=4, title="Discontinuidad inevitable finita (de salto)", dur=45,
-         speaker="Participante 3",
+         speaker="Fabrizio Riquelme",
          text=[
              "El segundo tipo es la discontinuidad inevitable finita, también conocida "
              "como discontinuidad de salto.",
@@ -77,7 +77,7 @@ SCENES = [
              "Por eso se llama discontinuidad de salto y no podemos solucionarla cambiando "
              "solamente el valor de la función en un punto.",
          ]),
-    dict(num=5, title="Discontinuidad inevitable infinita", dur=55, speaker="Participante 4",
+    dict(num=5, title="Discontinuidad inevitable infinita", dur=55, speaker="Jerónimo Lovera",
          text=[
              "Por último, tenemos la discontinuidad inevitable infinita.",
              "Para explicarla, vamos a utilizar el ejercicio que presentamos en nuestro cartel.",
@@ -97,15 +97,15 @@ SCENES = [
          ]),
     dict(num=6, title="Repaso y conclusión", dur=45, speaker="Todos",
          text_multi=[
-             ("Participante 1", "En conclusión, para saber si una función es continua, "
+             ("Sofía Cabrera", "En conclusión, para saber si una función es continua, "
                                  "debemos comprobar siempre las tres condiciones fundamentales."),
-             ("Participante 2", "Si el límite existe, pero no coincide con el valor de la "
+             ("Micaela Cubilla", "Si el límite existe, pero no coincide con el valor de la "
                                  "función, podemos tener una discontinuidad evitable."),
-             ("Participante 3", "Si los límites laterales son finitos pero diferentes, "
+             ("Fabrizio Riquelme", "Si los límites laterales son finitos pero diferentes, "
                                  "tenemos una discontinuidad de salto."),
-             ("Participante 4", "Y si la función presenta un comportamiento infinito cerca "
+             ("Jerónimo Lovera", "Y si la función presenta un comportamiento infinito cerca "
                                  "de un punto, tenemos una discontinuidad infinita."),
-             ("Todos / Participante 1", "¡Y así podemos identificar los distintos tipos de "
+             ("Todos / Sofía Cabrera", "¡Y así podemos identificar los distintos tipos de "
                                          "continuidad y discontinuidad de una función!"),
          ]),
 ]
@@ -132,6 +132,19 @@ sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
 r = sub.add_run("Develando los secretos de las funciones")
 r.italic = True
 r.font.size = Pt(13)
+
+course = doc.add_paragraph()
+course.alignment = WD_ALIGN_PARAGRAPH.CENTER
+cr = course.add_run("Matemática · 3° B BATIN")
+cr.font.size = Pt(11)
+cr.font.color.rgb = RGBColor(0x60, 0x60, 0x60)
+
+team = doc.add_paragraph()
+team.alignment = WD_ALIGN_PARAGRAPH.CENTER
+tr = team.add_run(
+    "Equipo: Sofía Cabrera · Micaela Cubilla · Fabrizio Riquelme · Jerónimo Lovera"
+)
+tr.font.size = Pt(11)
 
 p2 = doc.add_paragraph()
 p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -186,7 +199,7 @@ for sc in SCENES:
 
     if "text_multi" in sc:
         for speaker, line in sc["text_multi"]:
-            color = PERSON_COLORS.get(speaker, PERSON_COLORS["Participante 1"])
+            color = PERSON_COLORS.get(speaker, PERSON_COLORS["Sofía Cabrera"])
             sp = doc.add_paragraph()
             srun = sp.add_run(f"{speaker}: ")
             srun.bold = True
@@ -216,8 +229,8 @@ for sc in SCENES:
 doc.add_heading("Créditos finales", level=2)
 cred = doc.add_paragraph()
 cred.add_run(
-    "Dejar un espacio en pantalla al final de la Escena 6 (o como escena adicional de "
-    "créditos) con los nombres reales de los cuatro integrantes del equipo."
+    "Los nombres de los cuatro integrantes ya aparecen en pantalla al final de la "
+    "Escena 6, debajo del mensaje de cierre."
 ).italic = True
 
 doc.save("/home/user/Video-Mate/video_continuidad/Guion_Detectives_Continuidad.docx")

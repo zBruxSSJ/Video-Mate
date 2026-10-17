@@ -142,15 +142,22 @@ def draw(frame):
     p_final = su.seg_progress(frame, 500, 45)
     if p_final > 0:
         pulse = 1.0 if frame < 545 else 0.85 + 0.15 * (0.5 + 0.5 * np.sin((frame - 545) / 16.0))
-        su.rounded_card(ax, 0.5, 0.115, 0.88, 0.11,
+        su.rounded_card(ax, 0.5, 0.10, 0.90, 0.165,
                          facecolor=su.rgba(su.CARD_BG_ALT, p_final), edgecolor=su.GREEN,
-                         radius=0.022, lw=2.2 * pulse if p_final >= 1 else 2.2,
+                         radius=0.025, lw=2.2 * pulse if p_final >= 1 else 2.2,
                          scale=0.9 + 0.1 * p_final)
-        ax.text(0.5, 0.115,
+        ax.text(0.5, 0.135,
                  "Antes de decidir si una función es continua,\n"
                  "comprobá siempre las tres condiciones.",
                  fontsize=16, fontfamily=su.FONT_BODY_SB, color=su.rgba(su.TEXT_LIGHT, p_final),
                  ha="center", va="center", linespacing=1.5)
+
+    p_credits = su.seg_progress(frame, 545, 35)
+    if p_credits > 0:
+        ax.text(0.5, 0.045,
+                 "Sofía Cabrera  ·  Micaela Cubilla  ·  Fabrizio Riquelme  ·  Jerónimo Lovera",
+                 fontsize=13, fontfamily=su.FONT_BODY, color=su.rgba(su.TEXT_DIM, p_credits),
+                 ha="center", va="center")
 
     return []
 
